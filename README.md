@@ -345,10 +345,11 @@ You can verify the entire workflow interactively via Swagger UI (`http://127.0.0
 
 ## Deployment (Vercel)
 
-The repository provides zero-configuration Vercel deployment compatibility via root [`app.py`](app.py), which cleanly re-exports the FastAPI application instance:
+The repository provides zero-configuration Vercel deployment compatibility via [`api/index.py`](api/index.py), which cleanly re-exports the FastAPI application instance from `app.main`:
 
 ```bash
 # Local development command (unchanged):
 uvicorn app.main:app --reload --port 8000
 ```
+
 

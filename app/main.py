@@ -21,6 +21,14 @@ from app.core.error_handlers import register_error_handlers
 from app.data.seed import seed_data
 from app.data.store import get_store
 
+# Ensure included routers expose path property for route inspection compatibility
+try:
+    from fastapi.routing import _IncludedRouter
+    if not hasattr(_IncludedRouter, "path"):
+        _IncludedRouter.path = property(lambda self: self.include_context.prefix)  # type: ignore[assignment]
+except (ImportError, AttributeError):
+    pass
+
 settings = get_settings()
 
 
