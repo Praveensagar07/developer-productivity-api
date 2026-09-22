@@ -340,3 +340,15 @@ You can verify the entire workflow interactively via Swagger UI (`http://127.0.0
 11. **GET** `/api/v1/tasks/{task_id}` ➔ Verify deletion (returns `404`)
 12. **GET** `/api/v1/projects/{project_id}` ➔ Retrieve Project
 13. **GET** `/api/v1/users` ➔ Retrieve Users collection
+
+---
+
+## Deployment (Vercel)
+
+The repository provides zero-configuration Vercel deployment compatibility via root [`app.py`](app.py), which cleanly re-exports the FastAPI application instance:
+
+```bash
+# Local development command (unchanged):
+uvicorn app.main:app --reload --port 8000
+```
+

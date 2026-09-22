@@ -36,7 +36,8 @@ class Settings:
         self.debug: bool = os.getenv("DEBUG", "true").lower() in ("true", "1", "yes")
         self.api_prefix: str = os.getenv("API_PREFIX", "/api/v1")
         self.host: str = os.getenv("HOST", "0.0.0.0")
-        self.port: int = int(os.getenv("PORT", "8000"))
+        port_val = os.getenv("PORT", "8000")
+        self.port: int = int(port_val) if port_val and port_val.isdigit() else 8000
 
         # CORS origins parsing
         raw_origins = os.getenv(
