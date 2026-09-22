@@ -133,6 +133,7 @@ developer-productivity-api/
 │   ├── test_filters_and_pagination.py # Query filtering and pagination boundary tests
 │   ├── test_errors.py           # Error envelopes, health checks, and observability tests
 │   └── test_demo_workflow.py    # Full 13-step end-to-end user story test
+├── main.py                  # Root entrypoint for Vercel deployment & ASGI discovery
 ├── docs/
 │   └── api.md                   # Comprehensive API specification and endpoint guide
 ├── .env.example                 # Configuration template
@@ -200,6 +201,9 @@ Once running, access the services:
 - **Health Check:** `http://127.0.0.1:8000/health`
 - **Swagger UI:** `http://127.0.0.1:8000/docs`
 - **ReDoc:** `http://127.0.0.1:8000/redoc`
+
+### Vercel Deployment Entrypoint
+For serverless platforms such as Vercel, the root [`main.py`](main.py) re-exports the FastAPI application instance (`from app.main import app`) to ensure seamless ASGI discovery without modifying the internal layered `app/` package structure.
 
 ---
 
